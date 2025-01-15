@@ -18,6 +18,7 @@
             raspberry-pi-nix.nixosModules.raspberry-pi
             raspberry-pi-nix.nixosModules.sd-image
             ./configuration.nix
+            ./monitoring.nix
           ];
         };
       };
