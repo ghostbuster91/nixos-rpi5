@@ -16,6 +16,11 @@
 
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFFeU4GXH+Ae00DipGGJN7uSqPJxWFmgRo9B+xjV3mK4" ];
   };
+  swapDevices = [
+    {
+      device = "/dev/nvme0n1p3";
+    }
+  ];
 
   networking = {
     hostName = "malina5";
@@ -26,6 +31,7 @@
     neovim
     git
     wget
+    htop
   ];
   services.openssh = {
     enable = true;
