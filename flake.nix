@@ -20,37 +20,6 @@
         inputs.devshell.flakeModule
       ];
     };
-  # outputs = inputs @ { self, nixpkgs, nixos-raspberrypi, ... }:
-  #   {
-  #     nixosConfigurations = {
-  #       malina5 = nixos-raspberrypi.lib.nixosSystemFull  {
-  #         specialArgs = inputs;
-  #         system = "aarch64-linux";
-  #         modules = [
-  #           nixos-raspberrypi.nixosModules.raspberry-pi-5.base
-  #           nixos-raspberrypi.nixosModules.raspberry-pi-5.display-vc4
-  #           nixos-raspberrypi.nixosModules.raspberry-pi-5.bluetooth
-  #           ./configuration.nix
-  #           ./monitoring.nix
-  #           ./pi5-config.nix
-  #         ];
-  #       };
-  #     };
-  #     deploy = {
-  #       nodes = {
-  #         malina5 = {
-  #           sshUser = "kghost";
-  #           hostname = "malina5.local";
-  #           user = "root";
-  #           remoteBuild = true;
-  #           sshOpts = [ "-oControlMaster=no" ];
-  #           profiles.system.path =
-  #             inputs.deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.malina5;
-  #         };
-  #       };
-  #
-  #     };
-  #   };
   nixConfig = {
     extra-substituters = [ 
         "https://nix-community.cachix.org" 

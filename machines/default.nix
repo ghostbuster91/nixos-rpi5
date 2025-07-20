@@ -1,9 +1,8 @@
-{ self, inputs, ... }:
+{ self, inputs, lib, ... }:
 {
   flake.nixosConfigurations = {
     malina5 =
-        inputs.nixos-raspberrypi.lib.nixosSystemFull  {
-          specialArgs = inputs;
+        lib.nixosSystem  {
           system = "aarch64-linux";
           modules = [
              ./malina5
