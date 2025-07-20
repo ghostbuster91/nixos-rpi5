@@ -1,9 +1,23 @@
-{ pkgs, lib, ... }: {
-  # bcm2711 for rpi 3, 3+, 4, zero 2 w
-  # bcm2712 for rpi 5
-  # See the docs at:
-  # https://www.raspberrypi.com/documentation/computers/linux_kernel.html#native-build-configuration
-  raspberry-pi-nix.board = "bcm2712";
+{ pkgs, config, ... }: {
+  system.nixos.tags = let
+    cfg = config.boot.loader.raspberryPi;
+  in [
+    "raspberry-pi-${cfg.variant}"
+    cfg.bootloader
+    config.boot.kernelPackages.kernel.version
+  ];
+
+    fileSystems = {
+      "/boot/firmware" = {
+        device = "/dev/disk/by-label/FIRMWARE";
+        fsType = "vfat";
+      };
+      "/" = {
+        device = "/dev/disk/by-label/NIXOS_SD";
+        fsType = "ext4";
+      };
+    };
+
   time.timeZone = "Warsaw/Poland";
   users.users.root = {
     initialPassword = "root";
