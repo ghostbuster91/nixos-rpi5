@@ -6,6 +6,7 @@
     devNodes = "/dev/disk/by-id";
   };
 
+  networking.hostId = "8821e309"; # NOTE: for zfs, must be unique
   environment.systemPackages = with pkgs; [ zfs ];
 
   services.zfs = {
