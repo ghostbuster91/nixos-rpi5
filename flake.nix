@@ -32,17 +32,23 @@
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
     };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "aarch64-linux" "x86_64-linux" ];
       imports = [
+        inputs.treefmt-nix.flakeModule
         ./nix
       ];
-      # perSystem.treefmt = {
-      #   imports = [ ./treefmt.nix ];
-      # };
+      perSystem.treefmt = {
+        imports = [ ./treefmt.nix ];
+      };
       # perSystem.topology = {
       #   modules = [ ./topology.nix ];
       # };
