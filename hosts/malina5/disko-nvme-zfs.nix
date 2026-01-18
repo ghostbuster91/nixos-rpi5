@@ -44,11 +44,6 @@ let
 in
 {
 
-  boot.supportedFilesystems = [ "zfs" ];
-  # networking.hostId is set somewhere else
-  services.zfs.autoScrub.enable = true;
-  services.zfs.trim.enable = true;
-
   disko.devices = {
     disk.nvme0 = {
       type = "disk";
