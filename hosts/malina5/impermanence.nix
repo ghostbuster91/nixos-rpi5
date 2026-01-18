@@ -59,7 +59,7 @@
     ];
     # This should be specified in zsh module but the zsh module is hm-based
     # workaround for: https://github.com/nix-community/impermanence/issues/184
-    users."kghost" = {
+    users.${username} = {
       directories = [
         ".local/share/zsh_history"
       ];

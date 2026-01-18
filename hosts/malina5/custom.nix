@@ -1,7 +1,4 @@
 { config, pkgs, ... }: {
-  imports = [
-    ../../modules/nice-looking-console.nix
-  ];
 
   time.timeZone = "UTC";
   networking.hostName = "malina5";
