@@ -25,18 +25,19 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixos-raspberrypi/nixpkgs";
     };
-    nixos-anywhere = {
-      url = "github:nix-community/nixos-anywhere";
-    };
-
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
     };
-
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    deploy-rs.url = "github:serokell/deploy-rs";
+    devshell.url = "github:numtide/devshell";
   };
 
   outputs = inputs@{ flake-parts, ... }:
@@ -44,6 +45,7 @@
       systems = [ "aarch64-linux" "x86_64-linux" ];
       imports = [
         inputs.treefmt-nix.flakeModule
+        inputs.devshell.flakeModule
         ./nix
       ];
       perSystem.treefmt = {

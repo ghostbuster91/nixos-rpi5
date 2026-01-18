@@ -4,8 +4,8 @@
 }: {
   boot.zfs = {
     devNodes = "/dev/disk/by-id";
-    supportedFilesystems = [ "zfs" ];
   };
+  boot.supportedFilesystems = [ "zfs" ];
 
   networking.hostId = "8821e309"; # NOTE: for zfs, must be unique
   environment.systemPackages = with pkgs; [ zfs ];
